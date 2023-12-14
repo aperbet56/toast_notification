@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/**** Variables CSS ****/
+
+:root {
+    --dark: #34495e;
+    --light: #ffffff;
+    --success: #00ff37;
+    --error: #ff0000;
+    --warning: #ffd700;
+}
+
+/**** Reset ****/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    list-style-type: none;
+}
+
+/**** Style général de la page ****/
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.buttons .btn {
+    color: var(--light);
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.buttons .btn:hover {
+    box-shadow: 2px 2px 30px 0 rgb(255, 255, 255);
+}
+
+.notifications {
+    position: fixed;
+    top: 30px;
+    right: 20px;
+}
+
+.notifications :where(.toast, .column) {
+    display: flex;
+    align-items: center;
+}
+
+.notifications .toast {
+    position: relative;
+    width: 400px;
+    overflow: hidden;
+    border-radius: 4px;
+    padding: 16px 17px;
+    margin-bottom: 10px;
+    background-color: var(--light);
+    justify-content: space-between;
+    animation: showToast 0.3s ease-in-out forwards;
+}
+
+/**** Animation showToast ****/
+
+@keyframes showToast {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-5%);
+    }
+
+    80% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+.notifications .toast.hide {
+    animation: hideToast 0.3s ease-in-out forwards;
+}
+
+/**** Animation hideToast ****/
+
+@keyframes hideToast {
+    0% {
+        transform: translateX(-10px);
+    }
+
+    40% {
+        transform: translateX(0%);
+    }
+
+    80% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(calc(100% + 20px));
+    }
+}
+
+.toast::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    animation: progress 5s linear forwards;
+}
+
+/**** Animation progress ****/
+
+@keyframes progress {
+    0% {
+        width: 100%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}
+
+.toast.success::before, 
+.btn#success {
+    background-color: var(--success);
+}
+
+.toast.error::before, 
+.btn#error {
+    background-color: var(--error);
+}
+
+.toast.warning::before, 
+.btn#warning {
+    background-color: var(--warning);
+}
+
+.toast .column i {
+    font-size: 18px;
+}
+
+.toast.success .column i {
+    color: var(--success);
+}
+.toast.error .column i {
+    color: var(--error);
+}
+
+.toast.warning .column i {
+    color: var(--warning);
+}
+
+.toast .column span {
+    font-size: 16px;
+    margin-left: 12px;
+}
+
+.toast i:last-child {
+    color: #aeb0d7;
+    cursor: pointer;
+}
+
+.toast i:last-child:hover {
+    color: var(--dark);
+}
+
+/**** Responsive design ****/
+
+@media screen and (max-width: 530px) {
+    .notifications {
+        width: 95%;
+    }
+    
+    .notifications .toast {
+        width: 100%;
+        margin-left: 20px;
+    }
+}
