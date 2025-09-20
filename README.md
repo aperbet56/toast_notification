@@ -1,5 +1,7 @@
 ## TOAST NOTIFICATION
 
+![Design preview for the project](./img/preview.png)
+
 ## Le challenge
 
 Construction d'une application faisant apparaître des notifications de succès, d'erreur et d'avertissement en fonction du bouton (succès, erreur, avertissement) sur lequel l'internaute a cliqué.
@@ -9,7 +11,7 @@ Application entièrement responsive.
 
 Lien vers le projet : https://aperbet56.github.io/toast_notification/
 
-## Développez avec
+## Projet développé avec
 
 - Utilisation des balises sémantiques HTML5
 - CSS
